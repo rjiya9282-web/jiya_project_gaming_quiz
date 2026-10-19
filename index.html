@@ -1,0 +1,1100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSOT Quest | Learn & Level Up</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6ff;
+            color: #25254b;
+        }
+
+        /* TOP HEADER */
+        header {
+            background: linear-gradient(135deg, #312e81, #6366f1);
+            color: white;
+            padding: 25px 7%;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .welcome {
+            margin-top: 28px;
+        }
+
+        .welcome h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .welcome p {
+            color: #e0e7ff;
+            line-height: 1.6;
+        }
+
+        .level-pill {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 9px 15px;
+            background: #ffffff22;
+            border: 1px solid #ffffff44;
+            border-radius: 30px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            gap: 10px;
+            padding: 15px 7%;
+            background: white;
+            box-shadow: 0 3px 12px #00000008;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            border: none;
+            background: transparent;
+            color: #555579;
+            padding: 12px 17px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav button:hover,
+        nav button.active {
+            background: #eeedff;
+            color: #4f46e5;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            max-width: 1150px;
+            margin: 30px auto;
+            padding: 0 22px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .section-heading p {
+            color: #777792;
+            line-height: 1.5;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ececff;
+            border-radius: 17px;
+            padding: 23px;
+            box-shadow: 0 5px 20px #3730a308;
+            margin-bottom: 22px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        /* STAT CARDS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 17px;
+            margin-bottom: 23px;
+        }
+
+        .stat {
+            padding: 22px 18px;
+            border-radius: 16px;
+            border: 1px solid #ecebff;
+            background: white;
+            box-shadow: 0 5px 18px #3730a306;
+        }
+
+        .stat-icon {
+            font-size: 26px;
+            margin-bottom: 13px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #777792;
+            margin-bottom: 8px;
+        }
+
+        .stat-number {
+            font-size: 29px;
+            font-weight: bold;
+            color: #3730a3;
+        }
+
+        .stat-note {
+            font-size: 12px;
+            color: #777792;
+            margin-top: 7px;
+        }
+
+        /* XP PROGRESS */
+        .xp-card {
+            background: linear-gradient(120deg, #ffffff, #f0efff);
+        }
+
+        .xp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-circle {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .progress {
+            width: 100%;
+            height: 13px;
+            background: #e2e2f3;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 12px 0;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #6366f1, #a78bfa);
+            border-radius: 20px;
+            transition: width 0.5s;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 13px;
+            color: #6b6b8c;
+        }
+
+        /* TWO-COLUMN LAYOUT */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 22px;
+        }
+
+        /* QUESTS */
+        .quest {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 16px 0;
+            border-bottom: 1px solid #eeeeF7;
+        }
+
+        .quest:last-child {
+            border-bottom: none;
+        }
+
+        .quest-icon {
+            width: 45px;
+            height: 45px;
+            background: #eeedff;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .quest-details {
+            flex: 1;
+        }
+
+        .quest-details h4 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .quest-details p {
+            font-size: 12px;
+            color: #777792;
+            line-height: 1.5;
+        }
+
+        .xp-tag {
+            background: #e0f8e9;
+            color: #168044;
+            border-radius: 20px;
+            padding: 6px 9px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* BUTTONS */
+        .action {
+            display: inline-block;
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 17px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        .action:hover {
+            background: #3730a3;
+        }
+
+        .action:disabled {
+            background: #b7b6ce;
+            cursor: not-allowed;
+        }
+
+        .secondary {
+            background: #eeedff;
+            color: #4f46e5;
+        }
+
+        .secondary:hover {
+            background: #dedcff;
+        }
+
+        /* BADGES */
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .badge-item {
+            text-align: center;
+            background: #fafaff;
+            border: 1px solid #eeeeff;
+            padding: 17px 8px;
+            border-radius: 13px;
+        }
+
+        .badge-item .emoji {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .badge-item h4 {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .badge-item p {
+            font-size: 11px;
+            color: #777792;
+        }
+
+        .locked {
+            opacity: 0.45;
+            filter: grayscale(1);
+        }
+
+        /* QUIZ */
+        .option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #e0dfff;
+            border-radius: 10px;
+            background: #fafaff;
+            color: #25254b;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .option:hover:not(:disabled) {
+            background: #eeedff;
+            border-color: #8177f5;
+        }
+
+        .option:disabled {
+            cursor: default;
+        }
+
+        #feedback {
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
+        /* LEADERBOARD */
+        .rank-row {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eeeeF7;
+        }
+
+        .rank-number {
+            font-size: 18px;
+            width: 30px;
+            font-weight: bold;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #eeedff;
+            color: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .rank-name {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .rank-xp {
+            color: #4f46e5;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #85859b;
+            font-size: 13px;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 750px) {
+            .stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome h1 {
+                font-size: 25px;
+            }
+
+            .badge-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            main {
+                padding: 0 12px;
+            }
+
+            .stats {
+                gap: 10px;
+            }
+
+            .stat {
+                padding: 15px 12px;
+            }
+
+            .stat-number {
+                font-size: 24px;
+            }
+
+            .card {
+                padding: 17px;
+            }
+
+            nav {
+                padding: 10px;
+                gap: 3px;
+            }
+
+            nav button {
+                padding: 10px;
+            }
+
+            .xp-tag {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="topbar">
+        <div class="logo">🎮 MSOT Quest</div>
+        <div>✨ Learn • Earn • Level Up</div>
+    </div>
+
+    <div class="welcome">
+        <h1>Welcome back, Learner! 👋</h1>
+        <p>Your next achievement is waiting. Keep learning and reach your goals!</p>
+        <div class="level-pill" id="headerLevel">⭐ Level 1 Explorer</div>
+    </div>
+</header>
+
+<nav>
+    <button class="active" onclick="showPage('home', this)">Home</button>
+    <button onclick="showPage('dashboard', this)">Dashboard</button>
+    <button onclick="showPage('quiz', this)">Daily Quiz</button>
+    <button onclick="showPage('leaderboard', this)">Leaderboard</button>
+</nav>
+
+<main>
+
+    <!-- HOME -->
+    <section id="home" class="page active">
+        <div class="card">
+            <div class="section-heading">
+                <h2>Your learning adventure starts here 🚀</h2>
+                <p>Small steps every day lead to big achievements.</p>
+            </div>
+
+            <button class="action" onclick="openDashboard()">
+                Explore My Dashboard →
+            </button>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">TOTAL XP</div>
+                <div class="stat-number" id="homeXP">0</div>
+                <div class="stat-note">Learning points</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-label">STREAK</div>
+                <div class="stat-number" id="homeStreak">0</div>
+                <div class="stat-note">Consecutive days</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">🏅</div>
+                <div class="stat-label">BADGES</div>
+                <div class="stat-number" id="homeBadges">0</div>
+                <div class="stat-note">Achievements earned</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-label">LEVEL</div>
+                <div class="stat-number" id="homeLevel">1</div>
+                <div class="stat-note">Your current level</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page">
+        <div class="section-heading">
+            <h2>My Dashboard 📊</h2>
+            <p>Track your progress and complete today's learning quests.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-label">TOTAL XP</div>
+                <div class="stat-number" id="xp">0</div>
+                <div class="stat-note">Keep earning!</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">⭐</div>
+                <div class="stat-label">MY LEVEL</div>
+                <div class="stat-number" id="level">1</div>
+                <div class="stat-note">Explorer</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">🔥</div>
+                <div class="stat-label">DAILY STREAK</div>
+                <div class="stat-number" id="streak">0</div>
+                <div class="stat-note">Learning days</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-label">BADGES</div>
+                <div class="stat-number" id="badges">0</div>
+                <div class="stat-note">Unlocked rewards</div>
+            </div>
+        </div>
+
+        <div class="card xp-card">
+            <div class="xp-top">
+                <div>
+                    <h3 id="levelTitle">⭐ Level 1 — Explorer</h3>
+                    <p id="xpMessage">Start learning to earn your first XP!</p>
+                </div>
+                <div class="level-circle" id="levelCircle">1</div>
+            </div>
+
+            <div class="progress">
+                <div id="progressBar"></div>
+            </div>
+
+            <div class="progress-info">
+                <span id="progressText">0 / 100 XP</span>
+                <span id="remainingXP">100 XP to next level</span>
+            </div>
+        </div>
+
+        <div class="two-columns">
+            <div class="card">
+                <h3>🎯 Today's Quests</h3>
+                <p style="color:#777792; font-size:13px;">
+                    Complete activities to earn XP.
+                </p>
+
+                <div class="quest">
+                    <div class="quest-icon">🧠</div>
+                    <div class="quest-details">
+                        <h4>Daily Knowledge Quiz</h4>
+                        <p id="quizStatus">Answer 3 questions</p>
+                    </div>
+                    <span class="xp-tag">Up to 30 XP</span>
+                </div>
+
+                <div class="quest">
+                    <div class="quest-icon">💻</div>
+                    <div class="quest-details">
+                        <h4>Coding Practice</h4>
+                        <p id="practiceStatus">Complete a practice task</p>
+                    </div>
+                    <span class="xp-tag">+10 XP</span>
+                </div>
+
+                <button class="action" onclick="openQuiz()">
+                    Start Daily Quiz →
+                </button>
+
+                <button class="action secondary" id="practiceButton"
+                    onclick="completePractice()">
+                    Complete Practice
+                </button>
+            </div>
+
+            <div class="card">
+                <h3>🏅 My Achievements</h3>
+                <p style="color:#777792; font-size:13px; margin-bottom:18px;">
+                    Unlock badges as you learn.
+                </p>
+
+                <div class="badge-grid">
+                    <div class="badge-item" id="badgeFirst">
+                        <div class="emoji">🌱</div>
+                        <h4>First Steps</h4>
+                        <p>Earn 10 XP</p>
+                    </div>
+
+                    <div class="badge-item locked" id="badgeQuiz">
+                        <div class="emoji">🧠</div>
+                        <h4>Quiz Master</h4>
+                        <p>Get all answers right</p>
+                    </div>
+
+                    <div class="badge-item locked" id="badgeCentury">
+                        <div class="emoji">💯</div>
+                        <h4>Century</h4>
+                        <p>Reach 100 XP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="page">
+        <div class="card">
+            <div class="section-heading">
+                <h2>🧠 Daily Knowledge Quiz</h2>
+                <p>Test your knowledge and earn learning points.</p>
+            </div>
+
+            <p id="questionNumber">Question 1 of 3</p>
+            <h3 id="question" style="margin-top:18px;">
+                Loading question...
+            </h3>
+
+            <div id="options"></div>
+            <p id="feedback"></p>
+
+            <button class="action" id="nextButton"
+                onclick="nextQuestion()" hidden>
+                Next Question
+            </button>
+
+            <button class="action secondary" id="retryButton"
+                onclick="startQuiz()" hidden>
+                Try Again
+            </button>
+        </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="leaderboard" class="page">
+        <div class="card">
+            <div class="section-heading">
+                <h2>🏆 Weekly Leaderboard</h2>
+                <p>Celebrate progress and friendly competition.</p>
+            </div>
+
+            <div id="ranking"></div>
+
+            <p style="color:#777792; font-size:12px; margin-top:15px;">
+                Demo rankings only. Real student rankings will be connected later.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    🎮 MSOT Quest — Learn Something Every Day ✨
+</footer>
+
+<script>
+    // Load saved demo progress from the browser.
+    let xp = Number(localStorage.getItem("msotXP")) || 0;
+    let badges = Number(localStorage.getItem("msotBadges")) || 0;
+
+    let quizDone =
+        localStorage.getItem("msotQuizDone") === "yes";
+
+    let practiceDone =
+        localStorage.getItem("msotPracticeDone") === "yes";
+
+    let quizPerfect =
+        localStorage.getItem("msotQuizPerfect") === "yes";
+
+    function saveProgress() {
+        localStorage.setItem("msotXP", xp);
+        localStorage.setItem("msotBadges", badges);
+
+        localStorage.setItem(
+            "msotQuizDone", quizDone ? "yes" : "no"
+        );
+
+        localStorage.setItem(
+            "msotPracticeDone", practiceDone ? "yes" : "no"
+        );
+
+        localStorage.setItem(
+            "msotQuizPerfect", quizPerfect ? "yes" : "no"
+        );
+    }
+
+    function showPage(pageId, button) {
+        document.querySelectorAll(".page").forEach(page => {
+            page.classList.remove("active");
+        });
+
+        document.getElementById(pageId).classList.add("active");
+
+        document.querySelectorAll("nav button").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        if (button) {
+            button.classList.add("active");
+        } else {
+            document.querySelectorAll("nav button").forEach(btn => {
+                if (btn.getAttribute("onclick").includes(pageId)) {
+                    btn.classList.add("active");
+                }
+            });
+        }
+
+        if (pageId === "leaderboard") {
+            updateLeaderboard();
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function openDashboard() {
+        showPage("dashboard");
+    }
+
+    function openQuiz() {
+        showPage("quiz");
+        startQuiz();
+    }
+
+    function getLevel() {
+        return Math.floor(xp / 100) + 1;
+    }
+
+    function getBadgeCount() {
+        return (xp >= 10 ? 1 : 0)
+            + (quizPerfect ? 1 : 0)
+            + (xp >= 100 ? 1 : 0);
+    }
+
+    function updateDashboard() {
+        const level = getLevel();
+        const progress = xp % 100;
+        const remaining = 100 - progress;
+
+        // Update all XP and level displays.
+        ["xp", "homeXP"].forEach(id => {
+            document.getElementById(id).textContent = xp;
+        });
+
+        ["level", "homeLevel"].forEach(id => {
+            document.getElementById(id).textContent = level;
+        });
+
+        const badgeCount = getBadgeCount();
+
+        ["badges", "homeBadges"].forEach(id => {
+            document.getElementById(id).textContent = badgeCount;
+        });
+
+        // Streak tracking will be implemented in a later step.
+        document.getElementById("streak").textContent = "0";
+        document.getElementById("homeStreak").textContent = "0";
+
+        document.getElementById("headerLevel").textContent =
+            "⭐ Level " + level + " Explorer";
+
+        document.getElementById("levelTitle").textContent =
+            "⭐ Level " + level + " — Explorer";
+
+        document.getElementById("levelCircle").textContent = level;
+
+        document.getElementById("progressBar").style.width =
+            progress + "%";
+
+        document.getElementById("progressText").textContent =
+            progress + " / 100 XP";
+
+        document.getElementById("remainingXP").textContent =
+            remaining + " XP to next level";
+
+        document.getElementById("xpMessage").textContent =
+            progress === 0
+                ? "Keep going! Your next level awaits."
+                : "Great work! Keep earning XP.";
+
+        // Update quests.
+        document.getElementById("quizStatus").textContent =
+            quizDone ? "✅ Quiz completed" : "Answer 3 questions";
+
+        document.getElementById("practiceStatus").textContent =
+            practiceDone
+                ? "✅ Practice completed"
+                : "Complete a practice task";
+
+        const practiceButton =
+            document.getElementById("practiceButton");
+
+        practiceButton.disabled = practiceDone;
+
+        practiceButton.textContent =
+            practiceDone ? "Practice Completed ✓" : "Complete Practice";
+
+        // Unlock achievements.
+        document.getElementById("badgeFirst").classList.toggle(
+            "locked", xp < 10
+        );
+
+        document.getElementById("badgeQuiz").classList.toggle(
+            "locked", !quizPerfect
+        );
+
+        document.getElementById("badgeCentury").classList.toggle(
+            "locked", xp < 100
+        );
+    }
+
+    // Quiz questions for this first prototype.
+    const questions = [
+        {
+            question: "Which language is used to style web pages?",
+            options: ["HTML", "CSS", "C++", "SQL"],
+            answer: 1
+        },
+        {
+            question: "Which operator gives the remainder?",
+            options: ["/", "+", "%", "*"],
+            answer: 2
+        },
+        {
+            question: "Which HTML tag creates a hyperlink?",
+            options: ["<p>", "<h1>", "<img>", "<a>"],
+            answer: 3
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+    let quizSessionFinished = false;
+
+    
+function startQuiz() {
+    if (quizDone) {
+        document.getElementById("questionNumber").textContent =
+            "Today's quiz";
+
+        document.getElementById("question").textContent =
+            "You have already completed today's quiz! 🎉";
+
+        document.getElementById("options").innerHTML = "";
+
+        document.getElementById("feedback").textContent =
+            "Come back tomorrow for another challenge.";
+
+        document.getElementById("nextButton").hidden = true;
+        document.getElementById("retryButton").hidden = true;
+        return;
+    }
+
+    currentQuestion = 0;
+    score = 0;
+    answered = false;
+    quizSessionFinished = false;
+
+    document.getElementById("retryButton").hidden = true;
+
+    loadQuestion();
+}
+
+function loadQuestion() {
+    answered = false;
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").textContent =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+    document.getElementById("question").textContent = q.question;
+    document.getElementById("feedback").textContent = "";
+
+    document.getElementById("nextButton").hidden = true;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+
+        button.className = "option";
+        button.textContent = option;
+
+        button.onclick = function () {
+            checkAnswer(index);
+        };
+
+        optionsDiv.appendChild(button);
+    });
+}
+
+function checkAnswer(index) {
+    if (answered || quizSessionFinished) return;
+
+    answered = true;
+
+    document.querySelectorAll("#options .option").forEach(button => {
+        button.disabled = true;
+    });
+
+    if (index === questions[currentQuestion].answer) {
+        score++;
+
+        document.getElementById("feedback").textContent =
+            "Correct answer! 🎉";
+    } else {
+        document.getElementById("feedback").textContent =
+            "Incorrect. Keep practising! 💪";
+    }
+
+    document.getElementById("nextButton").textContent =
+        currentQuestion === questions.length - 1
+            ? "Finish Quiz"
+            : "Next Question";
+
+    document.getElementById("nextButton").hidden = false;
+}
+
+function nextQuestion() {
+    if (!answered || quizSessionFinished) return;
+
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        loadQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+ function finishQuiz() {
+
+    quizSessionFinished = true;
+
+    const oldLevel = getLevel();
+    const earnedXP = 15 + score * 5;
+
+    xp += earnedXP;
+    quizDone = true;
+
+    if (score === questions.length) {
+        quizPerfect = true;
+    }
+
+    badges = getBadgeCount();
+
+    saveProgress();
+    updateDashboard();
+    updateLeaderboard();
+
+    document.getElementById("questionNumber").textContent =
+        "Quiz Results";
+
+    document.getElementById("question").textContent =
+        "You scored " + score + " out of " + questions.length + "!";
+
+    document.getElementById("options").innerHTML = "";
+
+    document.getElementById("feedback").textContent =
+        "You earned " + earnedXP + " XP!" +
+        (getLevel() > oldLevel
+            ? " Level up! You reached Level " + getLevel() + "!"
+            : "");
+
+    document.getElementById("nextButton").hidden = true;
+    document.getElementById("retryButton").hidden = false;
+    document.getElementById("retryButton").textContent = "Back to Dashboard";
+    document.getElementById("retryButton").onclick = function () {
+        openDashboard();
+    };
+} 
+
+    function completePractice() {
+        if (practiceDone) return;
+
+        const oldLevel = getLevel();
+
+        practiceDone = true;
+        xp += 10;
+
+        saveProgress();
+        updateDashboard();
+
+        alert(
+            "Practice quest complete! +10 demo XP 🎉" +
+            (getLevel() > oldLevel ? "\nLevel up! ⭐" : "")
+        );
+    }
+
+    function updateLeaderboard() {
+        const players = [
+            { name: "Aarav", xp: 180 },
+            { name: "You", xp: xp },
+            { name: "Priya", xp: 120 },
+            { name: "Rohan", xp: 90 }
+        ];
+
+        players.sort((a, b) => b.xp - a.xp);
+
+        const ranking = document.getElementById("ranking");
+        ranking.innerHTML = "";
+
+        players.forEach((player, index) => {
+            const row = document.createElement("div");
+            row.className = "rank-row";
+
+            const rank = document.createElement("div");
+            rank.className = "rank-number";
+            rank.textContent = ["🥇", "🥈", "🥉"][index] || (index + 1);
+
+            const avatar = document.createElement("div");
+            avatar.className = "avatar";
+            avatar.textContent = player.name.charAt(0);
+
+            const name = document.createElement("div");
+            name.className = "rank-name";
+            name.textContent = player.name === "You"
+                ? "You (Demo Student)"
+                : player.name;
+
+            const points = document.createElement("div");
+            points.className = "rank-xp";
+            points.textContent = player.xp + " XP";
+
+            row.append(rank, avatar, name, points);
+            ranking.appendChild(row);
+        });
+    }
+
+    // Initial display.
+    updateDashboard();
+    updateLeaderboard();
+    startQuiz();
+</script>
+
+</body>
+</html>
